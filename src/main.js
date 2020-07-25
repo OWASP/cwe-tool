@@ -22,7 +22,7 @@ module.exports = class CweTool {
 
     const cweId = cweIdList[0]
     debug(`found [${!!cweId}] status for child/parent: [${cweId}/${parentId}]`)
-    return this.getOneCweId({ cweId })
+    return this._getOneCweId({ cweId })
   }
 
   getCweIdsByParent({ cweIds, indirect = false, parentId }) {
@@ -42,7 +42,7 @@ module.exports = class CweTool {
     return cweList
   }
 
-  getOneCweId({ cweId }) {
+  _getOneCweId({ cweId }) {
     return CWEDictionary[cweId]
   }
 }
