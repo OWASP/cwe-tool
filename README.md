@@ -41,7 +41,7 @@ Command-line options blueprint:
 | `--id`                | Get a CWE data by its ID.                                                                           | ✅             |
 | `--parent-id`         | When both `--id` and `--parent-id` are provided, returns only CWE ids which satisfy the parent id.  | ✅ PRs welcome |
 | `--indirect`          | When specified along with `--parent-id`, retrieves all indirect parents up to the root of the tree. | ✅             |
-| `--search`            | String search returns all the matching CWEs titles                                                  | ❌ PRs welcome |
+| `--search`            | String search returns all the matching CWEs titles                                                  | ✅             |
 | `--show-membership`   | Returns all the CWE IDs along with their CWE Category membership relations                          | ❌ PRs welcome |
 
 # Example

@@ -25,6 +25,19 @@ module.exports = class CweTool {
     return this._getOneCweId({ cweId })
   }
 
+  getCweByName({ searchString }) {
+    const searchResults = []
+
+    for (const [cweId, cweData] of Object.entries(CWEDictionary)) {
+      if (cweData.attr['@_Name'].includes(searchString)) {
+        debug(`found a match for search string: ${cweId}:${cweData.attr['@_Name']}`)
+        searchResults.push(cweData)
+      }
+    }
+
+    return searchResults
+  }
+
   getCweIdsByParent({ cweIds, indirect = false, parentId }) {
     const cweList = []
     cweIds.forEach(cweId => {
