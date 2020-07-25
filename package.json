@@ -1,0 +1,244 @@
+{
+  "name": "cwe-tool",
+  "version": "0.0.0-development",
+  "description": "A command line CWE discovery tool based on OWASP / CAPSEC database of Common Weakness Enumeration.",
+  "main": "index.js",
+  "bin": {
+    "cwe-tool": "./bin/cwe-tool.js"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "src",
+    "bin"
+  ],
+  "scripts": {
+    "lint": "eslint . && npm run lint:lockfile",
+    "lint:fix": "eslint . --fix",
+    "lint:lockfile": "lockfile-lint --path package-lock.json --validate-https --allowed-hosts npm yarn",
+    "format": "prettier --config .prettierrc.js --write '**/*.js'",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "jest",
+    "test:e2e": "nyc --report-dir coverage-e2e --reporter=lcov --reporter=json --reporter=text jest '/__tests__/e2e/.*' --coverage=false --testPathIgnorePatterns=[]",
+    "test:watch": "jest --watch",
+    "coverage:view": "open-cli coverage/lcov-report/index.html",
+    "pretest": "(rm -rf .nyc_output && rm -rf coverage-reports/ && rm -rf coverage.json) || true",
+    "posttest": "npm run report:combined",
+    "mkdir:reports": "mkdir coverage-reports || true",
+    "precopy:reports": "npm run mkdir:reports",
+    "copy:reports": "cp -r coverage-unit/coverage-final.json coverage-reports/unit-final.json && cp -r coverage-e2e/coverage-final.json coverage-reports/e2e-final.json",
+    "precombine:reports": "npm run copy:reports && mkdir .nyc_output || true",
+    "combine:reports": "nyc merge coverage-reports && mv coverage.json .nyc_output/out.json",
+    "prereport:combined": "npm run combine:reports",
+    "report:combined": "nyc report --reporter lcov --reporter text --report-dir coverage",
+    "postreport:combined": "nyc check-coverage",
+    "semantic-release": "semantic-release"
+  },
+  "author": {
+    "name": "Liran Tal",
+    "email": "liran.tal@gmail.com",
+    "url": "https://github.com/lirantal"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "cwe",
+    "cli",
+    "command line",
+    "owasp",
+    "mitre",
+    "cve",
+    "weakness",
+    "vulnerability",
+    "enumeration"
+  ],
+  "homepage": "https://github.com/lirantal/cwe-tool",
+  "bugs": {
+    "url": "https://github.com/lirantal/cwe-tool/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lirantal/cwe-tool.git"
+  },
+  "dependencies": {
+    "cwe-sdk": "^1.0.1",
+    "debug": "^4.1.1",
+    "nyc": "^15.1.0",
+    "yargs": "^15.4.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/commit-analyzer": "^6.2.0",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/github": "^5.4.2",
+    "@semantic-release/npm": "^5.1.13",
+    "@semantic-release/release-notes-generator": "^7.2.1",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cz-conventional-changelog": "^1.2.0",
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.7.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.0",
+    "lockfile-lint": "^2.0.1",
+    "open-cli": "^5.0.0",
+    "prettier": "^1.18.2",
+    "semantic-release": "^15.13.19"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true,
+    "notify": true,
+    "collectCoverage": true,
+    "coverageDirectory": "coverage-unit",
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "json"
+    ],
+    "testPathIgnorePatterns": [
+      "/__tests__/e2e/.*",
+      "/__tests__/.*/__fixtures__/.*"
+    ],
+    "collectCoverageFrom": [
+      "index.js",
+      "src/**/*.{js,ts}"
+    ],
+    "testMatch": [
+      "**/*.test.js"
+    ]
+  },
+  "nyc": {
+    "branches": 80,
+    "functions": 80,
+    "lines": 80,
+    "statements": 80
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint --env HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "post-merge": "npm install",
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ],
+    "parser": "babel-eslint",
+    "ignore": [
+      "**/out/"
+    ]
+  },
+  "eslintIgnore": [
+    "coverage/**"
+  ],
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true,
+      "jest": true
+    },
+    "plugins": [
+      "import",
+      "standard",
+      "node",
+      "security",
+      "jest"
+    ],
+    "extends": [
+      "standard",
+      "plugin:node/recommended"
+    ],
+    "rules": {
+      "no-process-exit": "warn",
+      "jest/no-disabled-tests": "error",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "node/no-unsupported-features": "off",
+      "node/no-unpublished-require": "off",
+      "security/detect-non-literal-fs-filename": "error",
+      "security/detect-unsafe-regex": "error",
+      "security/detect-buffer-noassert": "error",
+      "security/detect-child-process": "error",
+      "security/detect-disable-mustache-escape": "error",
+      "security/detect-eval-with-expression": "error",
+      "security/detect-no-csrf-before-method-override": "error",
+      "security/detect-non-literal-regexp": "error",
+      "security/detect-object-injection": "warn",
+      "security/detect-possible-timing-attacks": "error",
+      "security/detect-pseudoRandomBytes": "error",
+      "space-before-function-paren": "off",
+      "object-curly-spacing": "off"
+    },
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "ecmaFeatures": {
+        "impliedStrict": true
+      }
+    }
+  },
+  "release": {
+    "branch": "master",
+    "analyzeCommits": {
+      "preset": "angular",
+      "releaseRules": [
+        {
+          "type": "docs",
+          "release": "patch"
+        },
+        {
+          "type": "refactor",
+          "release": "patch"
+        },
+        {
+          "type": "style",
+          "release": "patch"
+        }
+      ]
+    }
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    "@semantic-release/npm",
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md"
+        ]
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
