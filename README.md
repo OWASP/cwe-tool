@@ -1,15 +1,4 @@
 <p align="center"><h1 align="center">
- ⚠️ IMPORTANT NOTICE ⚠️
-  </h1>
-</p>
-  
-<p align="center">
-    This project gratuated into the OWASP family and is now managed at <a href="https://github.com/OWASP/cwe-tool">OWASP/cwe-tool</a>
-</p>
-
----
-
-<p align="center"><h1 align="center">
   cwe-tool
 </h1>
 
