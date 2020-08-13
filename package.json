@@ -52,13 +52,13 @@
     "vulnerability",
     "enumeration"
   ],
-  "homepage": "https://github.com/lirantal/cwe-tool",
+  "homepage": "https://github.com/owasp/cwe-tool",
   "bugs": {
-    "url": "https://github.com/lirantal/cwe-tool/issues"
+    "url": "https://github.com/owasp/cwe-tool/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lirantal/cwe-tool.git"
+    "url": "https://github.com/owasp/cwe-tool.git"
   },
   "dependencies": {
     "cwe-sdk": "^1.0.1",

@@ -21,9 +21,9 @@
   <a href="https://www.npmjs.org/package/cwe-tool"><img src="https://badgen.net/npm/v/cwe-tool" alt="npm version"/></a>
   <a href="https://www.npmjs.org/package/cwe-tool"><img src="https://badgen.net/npm/license/cwe-tool" alt="license"/></a>
   <a href="https://www.npmjs.org/package/cwe-tool"><img src="https://badgen.net/npm/dt/cwe-tool" alt="downloads"/></a>
-  <a href="https://github.com/lirantal/cwe-tool/actions?workflow=CI"><img src="https://github.com/lirantal/cwe-tool/workflows/CI/badge.svg" alt="build"/></a>
-  <a href="https://codecov.io/gh/lirantal/cwe-tool"><img src="https://badgen.net/codecov/c/github/lirantal/cwe-tool" alt="codecov"/></a>
-  <a href="https://snyk.io/test/github/lirantal/cwe-tool"><img src="https://snyk.io/test/github/lirantal/cwe-tool/badge.svg" alt="Known Vulnerabilities"/></a>
+  <a href="https://github.com/owasp/cwe-tool/actions?workflow=CI"><img src="https://github.com/owasp/cwe-tool/workflows/CI/badge.svg" alt="build"/></a>
+  <a href="https://codecov.io/gh/owasp/cwe-tool"><img src="https://badgen.net/codecov/c/github/owasp/cwe-tool" alt="codecov"/></a>
+  <a href="https://snyk.io/test/github/owasp/cwe-tool"><img src="https://snyk.io/test/github/owasp/cwe-tool/badge.svg" alt="Known Vulnerabilities"/></a>
   <a href="./SECURITY.md"><img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-yellow.svg" alt="Responsible Disclosure Policy" /></a>
 </p>
 
