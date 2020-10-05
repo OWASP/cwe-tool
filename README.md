@@ -29,7 +29,11 @@ npx cwe-tool [...command-line options...]
 
 ## Docker
 
-TBD (❌ PRs welcome)
+Build and run in one step
+
+```shell
+docker build -t owasp/cwe . && docker run --rm owasp/cwe --id 22
+```
 
 # Usage
 
