@@ -29,7 +29,17 @@ npx cwe-tool [...command-line options...]
 
 ## Docker
 
-TBD (❌ PRs welcome)
+Build and run in one step
+
+```shell
+docker build -t owasp/cwe:latest . && docker run --rm owasp/cwe:latest --id 22
+```
+
+Run afterwards
+
+```shell
+docker run --rm owasp/cwe:sha1sum --search test
+```
 
 # Usage
 
