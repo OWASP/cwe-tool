@@ -32,7 +32,7 @@ npx cwe-tool [...command-line options...]
 Build and run in one step
 
 ```shell
-docker build -t owasp/cwe:sha1sum . && docker run --rm owasp/cwe:sha1sum --id 22
+docker build -t owasp/cwe:latest . && docker run --rm owasp/cwe:latest --id 22
 ```
 
 Run afterwards
