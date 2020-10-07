@@ -32,14 +32,22 @@ npx cwe-tool [...command-line options...]
 Build and run in one step
 
 ```shell
-docker build -t owasp/cwe:sha1sum . && docker run --rm owasp/cwe:sha1sum --id 22
+docker build -t owasp/cwe:latest . && docker run --rm owasp/cwe:latest --id 22
 ```
 
 Run afterwards
 
 ```shell
-docker run --rm owasp/cwe:sha1sum --search test
+docker run --rm owasp/cwe:latest --search test
 ```
+
+Pull image from Github package registry and run a search
+
+```shell
+docker pull docker.pkg.github.com/OWASP/cwe-tool/cwe-tool:latest
+docker run --rm docker.pkg.github.com/OWASP/cwe-tool/cwe-tool:latest --search test
+```
+
 
 # Usage
 
