@@ -28,7 +28,15 @@ npx cwe-tool [...command-line options...]
 
 ## Docker
 
-### Local Build instructions
+
+### Pull the image from Docker Hub
+
+```shell
+docker pull owasp/cwe-tool
+docker run --rm owasp/cwe-tool --search test
+```
+
+### Local build instructions
 
 ```shell
 git clone https://github.com/OWASP/cwe-tool
@@ -36,7 +44,6 @@ docker build -t docker.pkg.github.com/OWASP/cwe-tool/cwe-tool .
 ```
 
 -t `image name` above can be an image name of your choosing!
-
 
 Run examples with Docker
 
@@ -53,14 +60,6 @@ Pull image from Github package registry and run a search
 docker pull docker.pkg.github.com/OWASP/cwe-tool/cwe-tool:latest
 docker run --rm docker.pkg.github.com/OWASP/cwe-tool/cwe-tool:latest --search test
 ```
-
-### Pull image from Docker Hub
-```shell
-docker pull owasp/cwe-tool
-docker run --rm owasp/cwe-tool --search test
-```
-
-## 
 
 # Usage
 
