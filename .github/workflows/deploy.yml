@@ -81,7 +81,6 @@ jobs:
             org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
-        if: ${{  github.actor=="OWASP" }}
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
