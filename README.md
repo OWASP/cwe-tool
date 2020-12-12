@@ -33,7 +33,7 @@ npx cwe-tool [...command-line options...]
 
 ```shell
 docker pull owasp/cwe-tool
-docker run --rm owasp/cwe-tool --search test
+docker run --rm lirantal/cwe-tool --search test
 ```
 
 ### Local build instructions
