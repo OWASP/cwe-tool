@@ -68,7 +68,7 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v2
-        if: ${{ secrets.DOCKERHUB_USERNAME=="owasp" }}
+        if: ${{ secrets.DOCKERHUB_USERNAME=="lirantal" }}
         with:
           context: .
           file: ./Dockerfile
