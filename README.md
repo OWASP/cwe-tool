@@ -32,7 +32,7 @@ npx cwe-tool [...command-line options...]
 ### Pull the image from Docker Hub
 
 ```shell
-docker pull owasp/cwe-tool
+docker pull lirantal/cwe-tool
 docker run --rm lirantal/cwe-tool --search test
 ```
 
