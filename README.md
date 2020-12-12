@@ -16,7 +16,6 @@
   <a href="./SECURITY.md"><img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-yellow.svg" alt="Responsible Disclosure Policy" /></a>
 </p>
 
-
 # Install
 
 ## Executable with Node.js tooling
@@ -29,16 +28,37 @@ npx cwe-tool [...command-line options...]
 
 ## Docker
 
-Build and run in one step
+
+### Pull the image from Docker Hub
 
 ```shell
-docker build -t owasp/cwe:latest . && docker run --rm owasp/cwe:latest --id 22
+docker pull lirantal/cwe-tool
+docker run --rm lirantal/cwe-tool --search test
 ```
 
-Run afterwards
+### Local build instructions
 
 ```shell
-docker run --rm owasp/cwe:sha1sum --search test
+git clone https://github.com/OWASP/cwe-tool
+docker build -t docker.pkg.github.com/OWASP/cwe-tool/cwe-tool . 
+```
+
+-t `image name` above can be an image name of your choosing!
+
+Run examples with Docker
+
+```shell
+docker run --rm docker.pkg.github.com/OWASP/cwe-tool/cwe-tool --id 22
+docker run --rm docker.pkg.github.com/OWASP/cwe-tool/cwe-tool --search test
+```
+
+### Do not want to build locally? Pull the image down
+
+Pull image from Github package registry and run a search
+
+```shell
+docker pull docker.pkg.github.com/OWASP/cwe-tool/cwe-tool:latest
+docker run --rm docker.pkg.github.com/OWASP/cwe-tool/cwe-tool:latest --search test
 ```
 
 # Usage
