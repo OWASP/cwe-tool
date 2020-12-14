@@ -22,7 +22,7 @@ jobs:
         name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=owasp/cwe-tool
+          DOCKER_IMAGE=lirantal/cwe-tool
           VERSION=noop
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
@@ -61,17 +61,19 @@ jobs:
       -
         name: Login to DockerHub
         uses: docker/login-action@v1
-        if: ${{ secrets.DOCKERHUB_USERNAME=="owasp" }}
+        if: ${{ secrets.DOCKERHUB_USERNAME=="lirantal" }}
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
         uses: docker/build-push-action@v2
-        if: ${{ secrets.DOCKERHUB_USERNAME=="owasp" }}
+        if: ${{ secrets.DOCKERHUB_USERNAME=="lirantal" }}
         with:
           context: .
           file: ./Dockerfile
+          cache-from: type=registry,ref=lirantal/cwe-tool:latest
+          cache-to: type=inline
 ## platforms breaking?
 #          platforms: linux/amd64,linux/arm64,linux/386
           push: true
