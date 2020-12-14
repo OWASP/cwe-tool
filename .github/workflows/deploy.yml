@@ -61,14 +61,14 @@ jobs:
       -
         name: Login to DockerHub
         uses: docker/login-action@v1
-        if: ${{ secrets.DOCKERHUB_USERNAME=="lirantal" }}
+#        if: ${{ secrets.DOCKERHUB_USERNAME=="lirantal" }}
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
         uses: docker/build-push-action@v2
-        if: ${{ secrets.DOCKERHUB_USERNAME=="lirantal" }}
+ #       if: ${{ secrets.DOCKERHUB_USERNAME=="lirantal" }}
         with:
           context: .
           file: ./Dockerfile
