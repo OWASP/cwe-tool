@@ -85,14 +85,14 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
 #        if: ${{  github.actor=="OWASP" }}
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: OWASP/cwe-tool/cwe-tool
+          # repository: owasp/cwe-tool/cwe-tool
           ## container registry
           #registry: ghcr.io
-          #repository: OWASP/cwe-tool
+          #repository: owasp/cwe-tool
           tag_with_ref: true
