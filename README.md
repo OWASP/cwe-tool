@@ -3,7 +3,8 @@
 </h1>
 
 <p align="center">
-  A command line CWE discovery tool based on OWASP / CAPSEC database of Common Weakness Enumeration.
+  A command line CWE discovery tool based on OWASP / CAPSEC database of Common Weakness Enumeration.<br>
+  <a href="https://owasp.org/www-project-cwe-toolkit/">Official OWASP CWE Toolkit Page</a>
 </p>
 
 <p align="center">
