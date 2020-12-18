@@ -1,15 +1,8 @@
 name: dockerhub-deploy
 on:
-  push:
-    branches: 
-      - master 
-      - main
-    tags:
-      - 'v*.*.*'
-  pull_request:
-    branches: 
-      - master 
-      - main
+  release:
+    types: [created]
+
 jobs:
   path-context:
     runs-on: ubuntu-20.04
@@ -22,7 +15,7 @@ jobs:
         name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=lirantal/cwe-tool
+          DOCKER_IMAGE=owasp/cwe-tool
           VERSION=noop
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
@@ -72,7 +65,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          cache-from: type=registry,ref=lirantal/cwe-tool:latest
+          cache-from: type=registry,ref=owasp/cwe-tool:latest
           cache-to: type=inline
 ## platforms breaking?
 #          platforms: linux/amd64,linux/arm64,linux/386
