@@ -1,15 +1,8 @@
 name: dockerhub-deploy
 on:
-  push:
-    branches: 
-      - master 
-      - main
-    tags:
-      - 'v*.*.*'
-  pull_request:
-    branches: 
-      - master 
-      - main
+  release:
+    types: [created]
+
 jobs:
   path-context:
     runs-on: ubuntu-20.04
