@@ -64,7 +64,7 @@
     "cwe-sdk": "^1.1.8",
     "debug": "^4.3.4",
     "nyc": "^15.1.0",
-    "yargs": "^17.3.1"
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
