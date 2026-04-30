@@ -61,9 +61,9 @@
     "url": "https://github.com/owasp/cwe-tool.git"
   },
   "dependencies": {
-    "cwe-sdk": "^1.1.8",
+    "cwe-sdk": "^1.1.17",
     "debug": "^4.3.5",
-    "nyc": "^15.1.0",
+    "nyc": "^17.0.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
